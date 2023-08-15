@@ -1,0 +1,453 @@
+{
+	"info": {
+		"_postman_id": "d0a44a90-9b23-4de2-8cc8-e62fa24ba8c5",
+		"name": "Postman API-2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Program-DataDriven Approach",
+			"item": [
+				{
+					"name": "Create Program",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d63f2178-9fbc-4388-80ef-2caec7474b68",
+								"exec": [
+									"\r",
+									"\r",
+									"const jsonresponse= pm.response.json();\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Validate content-type header\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-type\")).to.equal(\"application/json\");\r",
+									"});\r",
+									"pm.test(\"Validating Header for Server\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Server\")).to.equal(\"Cowboy\");\r",
+									"});\r",
+									"pm.test(\"Validating Header for Transfer-Encoding\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Transfer-Encoding\")).to.equal(\"chunked\");\r",
+									"});\r",
+									"pm.test(\"Validate Program ID is present in the response body\", () => {\r",
+									"pm.expect(jsonresponse.programId).to.be.exist;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate Program Name is present in the response body\", () => {\r",
+									"pm.expect(jsonresponse.programName).to.be.exist;\r",
+									"});\r",
+									"pm.test(\"Validate Program Description is present in the response body\", () => {\r",
+									"pm.expect(jsonresponse.programDescription).to.be.exist;\r",
+									"});\r",
+									"pm.test(\"Validate Program Status  is present in the response body\", () => {\r",
+									"pm.expect(jsonresponse.programStatus).to.be.exist;\r",
+									"});\r",
+									"pm.test(\"Validate creation time  is present in the response body\", () => {\r",
+									"pm.expect(jsonresponse.creationTime).to.be.exist;\r",
+									"});\r",
+									"pm.test(\"Validate Last Modified time  is present in the response body\", () => {\r",
+									"pm.expect(jsonresponse.lastModTime).to.be.exist;\r",
+									"});\r",
+									"pm.test(\"Validating data type of  response body\", () => {\r",
+									"    pm.expect(jsonresponse.programId).to.be.a(\"number\");\r",
+									"    pm.expect(jsonresponse.programName).to.be.a('string');\r",
+									"    pm.expect(jsonresponse.programDescription).to.be.a(\"string\");\r",
+									"    pm.expect(jsonresponse.programStatus).to.be.a(\"string\");\r",
+									"    pm.expect(jsonresponse.creationTime).to.be.a(\"string\");\r",
+									"    pm.expect(jsonresponse.lastModTime).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"//JSON SCHEMA VALIDATION\r",
+									"var schema =\r",
+									" {\r",
+									"    \"properties\": {\r",
+									"    \"programId\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"programName\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"programDescription\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"programStatus\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"creationTime\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"lastModTime\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"programId\",\r",
+									"    \"programName\",\r",
+									"    \"programDescription\",\r",
+									"    \"programStatus\",\r",
+									"    \"creationTime\",\r",
+									"    \"lastModTime\"\r",
+									"  ]\r",
+									"}\r",
+									" \r",
+									"pm.test(\"Schema is valid\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"}); \r",
+									"\r",
+									"var prog_id=jsonresponse.programId;\r",
+									"console.log(prog_id);\r",
+									"pm.globals.set(\"programId\",prog_id);\r",
+									"var prog_name=jsonresponse.programName;\r",
+									"pm.globals.set(\"programName\",prog_name);\r",
+									"var prog_desc=jsonresponse.programDescription;\r",
+									"pm.globals.set(\"programDescription\",prog_desc);\r",
+									"var creat_time= jsonresponse.creationTime;\r",
+									"pm.globals.set(\"creationTime\",creat_time);\r",
+									"var last_time=jsonresponse.lastModTime;\r",
+									"pm.globals.set(\"lastModTime\",last_time);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "d747b7c4-5942-4e64-ad3b-8bffec64a93c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"programDescription\":\"{{programDescription_ddt}}\",\r\n\"programName\":\"{{programName_ddt}}{{$randomInt}}\",\r\n\"programStatus\":\"{{programStatus_ddt}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{basse_url}}/saveprogram"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Programs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b9cb496c-adf1-43ed-9036-e5e6a8240663",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validating Content-Type header\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.equal(\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "55955557-8ac5-4050-a5fa-1e6f768848e2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://lms-api-hackathon-june2023-930a8b0f895d.herokuapp.com/lms/allPrograms"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Program by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3d65b2a2-e9a5-4e2a-9aca-8d3ee91b8960",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validating Content-Type header\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.equal(\"application/json\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "b837ffc6-4a34-42a3-b3cb-f1e5083c3a13",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{basse_url}}/programs/{{programId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update program by name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "add04dab-1b44-4c6c-b717-97d56c859d69",
+								"exec": [
+									"const reqpayLoad = \r",
+									"{\r",
+									"  \"programName\": pm.globals.get(\"programName\"),\r",
+									"  \"programDescription\" : pm.globals.get(\"programDescription\"),\r",
+									"  \"programStatus\" :\"completed1\",\r",
+									"  \"creationTime\" : pm.globals.get(\"creationTime\"),\r",
+									"  \"lastModTime\":pm.globals.get(\"lastModTime\")\r",
+									"}\r",
+									"pm.collectionVariables.set(\"reqpayLoad\", JSON.stringify(reqpayLoad));//convert the response to json format"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "630f0813-5605-4f1d-8266-41c57e5e4ac4",
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "03a05d0e-5c36-4d99-a2bc-b60c62a0d103",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{reqpayLoad}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basse_url}}/program/:programName",
+							"host": [
+								"{{basse_url}}"
+							],
+							"path": [
+								"program",
+								":programName"
+							],
+							"variable": [
+								{
+									"key": "programName",
+									"value": "{{programName}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update program by Id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "de476261-9d1b-47c1-90ac-a6245a750415",
+								"exec": [
+									"const requestPayLoad =\r",
+									"{ \r",
+									"  \r",
+									"  \"programDescription\": pm.globals.get(\"programDescription\"),\r",
+									"  \"programName\": pm.globals.get(\"programName\"),\r",
+									"  \"programStatus\": \"CompletedAll\"\r",
+									"}\r",
+									"pm.collectionVariables.set(\"requestPayLoad\",JSON.stringify(requestPayLoad));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "be60f39f-7fe0-448f-8072-35ec876abaf1",
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "30162361-cba2-4482-b462-6506464ace04",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{requestPayLoad}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lms-api-hackathon-june2023-930a8b0f895d.herokuapp.com/lms/putprogram/:programId",
+							"protocol": "https",
+							"host": [
+								"lms-api-hackathon-june2023-930a8b0f895d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"lms",
+								"putprogram",
+								":programId"
+							],
+							"variable": [
+								{
+									"key": "programId",
+									"value": "{{programId}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Program by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3acf95c-2809-4b48-9ded-ab7cb254b49e",
+								"exec": [
+									"const resultBody=pm.response.text();\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response message validation\",function(){\r",
+									"    pm.expect(resultBody).contains(\"is deleted Successfully!\")\r",
+									"\r",
+									"});   \r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "4859f854-09d4-4492-8b05-615e81bd4b05",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{basse_url}}/deletebyprogid/{{programId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Program by Name",
+					"_postman_id": "1f689a09-00c4-4231-9b9a-72c9ba7ef56d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{basse_url}} /deletebyprogname/{{programName}}"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "68633c5e-2fbb-42e7-a213-7bd5c73c5cf9"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6a5e23cc-07c2-4435-9f96-a2bcbe6b170d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "cee9c5c1-ce92-4c0e-b24c-5eca362a364a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d0e7e60a-29e5-4887-bac7-4292b76dfa58",
+			"key": "basse_url",
+			"value": "http://lms-api-hackathon-june2023-930a8b0f895d.herokuapp.com/lms",
+			"type": "string"
+		},
+		{
+			"id": "da22b991-3514-42e3-ad6e-18b399b1f74b",
+			"key": "reqpayLoad",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "f5a12b03-848b-4ca4-b320-21016b1b4114",
+			"key": "requestPayLoad",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
