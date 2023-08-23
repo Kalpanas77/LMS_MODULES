@@ -126,7 +126,7 @@
 							}
 						}
 					],
-					"_postman_id": "d747b7c4-5942-4e64-ad3b-8bffec64a93c",
+					"id": "d747b7c4-5942-4e64-ad3b-8bffec64a93c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -166,7 +166,7 @@
 							}
 						}
 					],
-					"_postman_id": "55955557-8ac5-4050-a5fa-1e6f768848e2",
+					"id": "55955557-8ac5-4050-a5fa-1e6f768848e2",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -196,7 +196,7 @@
 							}
 						}
 					],
-					"_postman_id": "b837ffc6-4a34-42a3-b3cb-f1e5083c3a13",
+					"id": "b837ffc6-4a34-42a3-b3cb-f1e5083c3a13",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -241,7 +241,7 @@
 							}
 						}
 					],
-					"_postman_id": "03a05d0e-5c36-4d99-a2bc-b60c62a0d103",
+					"id": "03a05d0e-5c36-4d99-a2bc-b60c62a0d103",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -269,8 +269,7 @@
 							"variable": [
 								{
 									"key": "programName",
-									"value": "{{programName}}",
-									"type": "string"
+									"value": "{{programName}}"
 								}
 							]
 						}
@@ -310,7 +309,7 @@
 							}
 						}
 					],
-					"_postman_id": "30162361-cba2-4482-b462-6506464ace04",
+					"id": "30162361-cba2-4482-b462-6506464ace04",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -342,8 +341,7 @@
 							"variable": [
 								{
 									"key": "programId",
-									"value": "{{programId}}",
-									"type": "string"
+									"value": "{{programId}}"
 								}
 							]
 						}
@@ -380,7 +378,7 @@
 							}
 						}
 					],
-					"_postman_id": "4859f854-09d4-4492-8b05-615e81bd4b05",
+					"id": "4859f854-09d4-4492-8b05-615e81bd4b05",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -393,7 +391,7 @@
 				},
 				{
 					"name": "Delete Program by Name",
-					"_postman_id": "1f689a09-00c4-4231-9b9a-72c9ba7ef56d",
+					"id": "1f689a09-00c4-4231-9b9a-72c9ba7ef56d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -405,7 +403,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "68633c5e-2fbb-42e7-a213-7bd5c73c5cf9"
+			"id": "68633c5e-2fbb-42e7-a213-7bd5c73c5cf9"
 		}
 	],
 	"event": [
@@ -432,22 +430,20 @@
 	],
 	"variable": [
 		{
-			"id": "d0e7e60a-29e5-4887-bac7-4292b76dfa58",
+			"id": "c2470e13-ab7c-4860-827a-1a4a88f6eec8",
 			"key": "basse_url",
 			"value": "http://lms-api-hackathon-june2023-930a8b0f895d.herokuapp.com/lms",
 			"type": "string"
 		},
 		{
-			"id": "da22b991-3514-42e3-ad6e-18b399b1f74b",
+			"id": "d4937930-c874-4f74-b6c3-b113752badbc",
 			"key": "reqpayLoad",
-			"value": "",
-			"type": "string"
+			"value": ""
 		},
 		{
-			"id": "f5a12b03-848b-4ca4-b320-21016b1b4114",
+			"id": "6c690c18-40b0-4daf-bcc8-6644335f9d34",
 			"key": "requestPayLoad",
-			"value": "",
-			"type": "string"
+			"value": ""
 		}
 	]
 }
